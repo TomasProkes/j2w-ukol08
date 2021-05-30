@@ -4,7 +4,9 @@ import cz.czechitas.java2webapps.ukol8.entity.Post;
 import cz.czechitas.java2webapps.ukol8.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +23,11 @@ public class PostService {
     }
 
     /**
-     * Returns a pageable list of all posts in the database (though not sorted yet)
+     * Returns a pageable list of all posts in the database
      */
     public Page<Post> list(Pageable pageable) {
-        return postRepository.findAll(pageable);
+        Pageable postList = PageRequest.of(0, 20, Sort.by("published").descending());
+        return postRepository.findPublishedPosts(pageable);
     }
 
     /**
