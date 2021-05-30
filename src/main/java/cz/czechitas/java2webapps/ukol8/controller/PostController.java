@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -24,5 +25,11 @@ public class PostController {
     public ModelAndView baseList(@PageableDefault(sort = {"published"}) Pageable pageable) {
         return new ModelAndView("posts")
                 .addObject("posts", service.list(pageable));
+    }
+
+    @GetMapping("/post/{slug}")
+    public ModelAndView blogPost(@PathVariable String slug) {
+        return new ModelAndView("post")
+                .addObject("post", service.singlePost(slug));
     }
 }
