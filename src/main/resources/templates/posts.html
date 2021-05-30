@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seznam osob</title>
+    <title>Simple blog app</title>
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/normalize.css" th:href="@{/css/normalize.css}">
     <link rel="stylesheet" href="/css/skeleton.css" th:href="@{/css/skeleton.css}">
@@ -30,8 +30,12 @@
 
                 <!--            <td th:text="${post.slug}">slug</td>-->
                 <td th:text="${post.author}">author</td>
-                <td th:text="${post.title}">title</td>
-                <td th:utext="${post.perex}">perex</td>
+                <td>
+                    <a th:href="@{/post/{slugPart}(slugPart=${post.slug})}" th:text="${post.title}">title</a>
+                </td>
+                <td>
+                    <a th:href="@{/post/{slugPart}(slugPart=${post.slug})}" th:utext="${post.perex}">perex</a>
+                </td>
                 <!--            <td th:utext="${post.body}">body</td>-->
                 <td th:text="${#temporals.format(post.published, 'd MMMM yyyy')}">13 August 2021</td>
 
