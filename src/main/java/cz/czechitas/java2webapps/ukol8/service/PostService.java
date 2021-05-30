@@ -5,6 +5,7 @@ import cz.czechitas.java2webapps.ukol8.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,5 +25,14 @@ public class PostService {
      */
     public Page<Post> list(Pageable pageable) {
         return postRepository.findAll(pageable);
+    }
+
+    /**
+     * Returns a post based on the post's slug
+     * @param slug a unique value in blog posts
+     * @return a single post, or null if not available
+     */
+    public Post singlePost(String slug) {
+        return postRepository.findBySlug(slug);
     }
 }
