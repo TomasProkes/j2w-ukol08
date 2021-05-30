@@ -26,7 +26,7 @@ public class PostService {
      * Returns a pageable list of all posts in the database
      */
     public Page<Post> list(Pageable pageable) {
-        Pageable postList = PageRequest.of(0, 20, Sort.by("published").descending());
+
         return postRepository.findPublishedPosts(pageable);
     }
 

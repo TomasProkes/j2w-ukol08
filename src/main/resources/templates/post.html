@@ -17,6 +17,7 @@
     <h2 th:text="${post.author + ', ' + #temporals.format(post.published, 'd MMMM yyyy')}">Author, posting date</h2>
     <p></p><hr><p></p>
     <h3 th:utext="${post.perex}">Post perex</h3>
+    <p></p>
     <div th:utext="${post.body}">Post body</div>
 </main>
 </body>
