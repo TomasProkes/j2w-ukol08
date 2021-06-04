@@ -17,7 +17,8 @@ import java.time.LocalDate;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
-    Pageable postList = PageRequest.of(0, 20);
+    // TODO REMOVE
+//    Pageable postList = PageRequest.of(0, 20);
 
     /**
      * Search all posts and return that one that contains a specific slug

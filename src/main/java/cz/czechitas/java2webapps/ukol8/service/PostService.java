@@ -26,7 +26,8 @@ public class PostService {
      * Returns a pageable list of all posts in the database
      */
     public Page<Post> list(Pageable pageable) {
-
+        // TODO REMOVE
+//        pageable = PageRequest.of(0, 20);
         return postRepository.findPublishedPosts(pageable);
     }
 
