@@ -20,13 +20,11 @@
             <th>Author</th>
             <th>Title</th>
             <th>Perex</th>
-
             <th>Published</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="post: ${posts}">
-
             <td th:text="${post.author}">author</td>
             <td>
                 <a th:href="@{/post/{slugPart}(slugPart=${post.slug})}" th:text="${post.title}">title</a>
@@ -34,9 +32,7 @@
             <td>
                 <a th:href="@{/post/{slugPart}(slugPart=${post.slug})}" th:utext="${post.perex}">perex</a>
             </td>
-
             <td th:text="${#temporals.format(post.published, 'd MMMM yyyy')}">13 August 2021</td>
-
         </tr>
         </tbody>
     </table>

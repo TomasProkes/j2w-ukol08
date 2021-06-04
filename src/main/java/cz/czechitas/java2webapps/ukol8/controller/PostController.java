@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +23,8 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public ModelAndView baseList(@PageableDefault(sort = {"published"}) Pageable pageable) {
-        // TODO convert to local var && increase back to 20 after test
-        pageable = PageRequest.of(0, 5, Sort.by("published").descending());
+    public ModelAndView baseList() {
+        Pageable pageable = PageRequest.of(0, 20, Sort.by("published").descending());
         return new ModelAndView("posts")
                 .addObject("posts", service.list(pageable));
     }

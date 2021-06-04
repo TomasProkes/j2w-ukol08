@@ -4,10 +4,7 @@ import cz.czechitas.java2webapps.ukol8.entity.Post;
 import cz.czechitas.java2webapps.ukol8.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,13 +23,12 @@ public class PostService {
      * Returns a pageable list of all posts in the database
      */
     public Page<Post> list(Pageable pageable) {
-        // TODO REMOVE
-//        pageable = PageRequest.of(0, 20);
         return postRepository.findPublishedPosts(pageable);
     }
 
     /**
      * Returns a post based on the post's slug
+     *
      * @param slug a unique value in blog posts
      * @return a single post, or null if not available
      */
